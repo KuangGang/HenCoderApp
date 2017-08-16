@@ -2,6 +2,7 @@ package com.kuanggang.hencoderapp.function;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
@@ -33,6 +34,8 @@ public class BrowserActivity extends BaseActivity {
     WebViewLayout webViewLayout;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.fab_practice)
+    FloatingActionButton fabPractice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class BrowserActivity extends BaseActivity {
 
     private void initListener() {
         ivClose.setOnClickListener(this);
+        fabPractice.setOnClickListener(this);
     }
 
     private void loadUrl() {
@@ -65,6 +69,9 @@ public class BrowserActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.iv_close:
                 finish();
+                break;
+            case R.id.fab_practice:
+                ToastUtil.show(this, "回家做啦！！");
                 break;
         }
     }

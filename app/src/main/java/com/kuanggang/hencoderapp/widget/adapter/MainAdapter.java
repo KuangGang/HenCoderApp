@@ -2,16 +2,21 @@ package com.kuanggang.hencoderapp.widget.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.kuanggang.hencoderapp.AppApplication;
 import com.kuanggang.hencoderapp.Constants;
 import com.kuanggang.hencoderapp.R;
 import com.kuanggang.hencoderapp.function.BrowserActivity;
 import com.kuanggang.hencoderapp.model.type.HomeDataEnum;
+import com.kuanggang.hencoderapp.utils.DensityUtil;
+import com.kuanggang.hencoderapp.utils.GlideUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,8 +38,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         HomeDataEnum entity = HomeDataEnum.values()[position];
         holder.tvTitle.setText(entity.title);
         holder.tvDesc.setText(entity.desc);
-        holder.rlRoot.setOnClickListener(v -> {
-            Context context = holder.rlRoot.getContext();
+        GlideUtils.newInstance().loadNetImage(entity.imageUrl, holder.iv);
+        holder.cardView.setOnClickListener(v -> {
+            Context context = holder.cardView.getContext();
             Intent intent = new Intent(context, BrowserActivity.class);
             intent.putExtra(Constants.URL_KEY, entity);
             context.startActivity(intent);
@@ -47,16 +53,22 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     }
 
     static class MainViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.iv)
+        ImageView iv;
         @BindView(R.id.tv_title)
         TextView tvTitle;
         @BindView(R.id.tv_desc)
         TextView tvDesc;
-        @BindView(R.id.rl_root)
-        RelativeLayout rlRoot;
+        @BindView(R.id.cardView)
+        CardView cardView;
 
         MainViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) iv.getLayoutParams();
+            layoutParams.height = (DensityUtil.getScreenWidth(AppApplication.application) - DensityUtil.dip2px(AppApplication.application, 30)) / 16 * 9;
+            iv.setLayoutParams(layoutParams);
         }
     }
 }

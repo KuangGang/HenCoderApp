@@ -43,15 +43,28 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.kuanggang.androidcustomview.widget.customview.WebViewLayout
+        <com.kuanggang.hencoderapp.widget.customview.WebViewLayout
             android:id="@+id/webViewLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_practice"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_margin="20dp"
+        android:src="@mipmap/icon_demo"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/nestedScrollView"
+        app:layout_anchorGravity="bottom|left|end"
+        app:layout_behavior="com.kuanggang.hencoderapp.utils.behavior.FloatingActionBarBehavior" />
 </android.support.design.widget.CoordinatorLayout>
