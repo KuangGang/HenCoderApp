@@ -1,4 +1,4 @@
-package com.kuanggang.hencoderapp.model.type;
+package com.kuanggang.hencoderapp.model.denum;
 
 /**
  * @author KG on 2017/7/5.

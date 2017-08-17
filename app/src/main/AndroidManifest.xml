@@ -33,6 +33,11 @@
             android:name=".function.BrowserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="true" />
+
+        <activity
+            android:name=".function.practice.PracticeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

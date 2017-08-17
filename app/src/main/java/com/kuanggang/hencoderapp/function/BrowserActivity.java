@@ -1,5 +1,6 @@
 package com.kuanggang.hencoderapp.function;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +13,8 @@ import android.widget.TextView;
 import com.kuanggang.hencoderapp.Constants;
 import com.kuanggang.hencoderapp.R;
 import com.kuanggang.hencoderapp.base.BaseActivity;
-import com.kuanggang.hencoderapp.model.type.HomeDataEnum;
+import com.kuanggang.hencoderapp.function.practice.PracticeActivity;
+import com.kuanggang.hencoderapp.model.denum.HomeDataEnum;
 import com.kuanggang.hencoderapp.utils.TextUtil;
 import com.kuanggang.hencoderapp.utils.ToastUtil;
 import com.kuanggang.hencoderapp.widget.customview.WebViewLayout;
@@ -37,6 +39,8 @@ public class BrowserActivity extends BaseActivity {
     @BindView(R.id.fab_practice)
     FloatingActionButton fabPractice;
 
+    private HomeDataEnum mData;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +59,13 @@ public class BrowserActivity extends BaseActivity {
     }
 
     private void loadUrl() {
-        HomeDataEnum entity = (HomeDataEnum) getIntent().getSerializableExtra(Constants.URL_KEY);
-        if (entity == null) {
+        mData = (HomeDataEnum) getIntent().getSerializableExtra(Constants.URL_KEY);
+        if (mData == null) {
             ToastUtil.show(this, R.string.error_date);
             return;
         }
-        tvTitle.setText(entity.title);
-        webViewLayout.loadUrl(entity.url);
+        tvTitle.setText(mData.title);
+        webViewLayout.loadUrl(mData.url);
     }
 
     @Override
@@ -71,7 +75,10 @@ public class BrowserActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.fab_practice:
-                ToastUtil.show(this, "回家做啦！！");
+                if (mData == null) return;
+                Intent intent = new Intent(this, PracticeActivity.class);
+                intent.putExtra(Constants.CLASS_CODE, mData);
+                startActivity(intent);
                 break;
         }
     }

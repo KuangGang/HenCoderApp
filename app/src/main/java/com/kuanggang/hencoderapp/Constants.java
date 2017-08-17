@@ -41,12 +41,7 @@ public interface Constants {
     String URL_KEY = "url";
 
     /**
-     * 获取图片URL列表的key
+     * 课程编号
      */
-    String IMAGE_URL_LIST_KEY = "image_url_list";
-
-    /**
-     * 获取当前图片URL
-     */
-    String IMAGE = "image";
+    String CLASS_CODE = "class_code";
 }

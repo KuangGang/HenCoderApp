@@ -14,7 +14,7 @@ import com.kuanggang.hencoderapp.AppApplication;
 import com.kuanggang.hencoderapp.Constants;
 import com.kuanggang.hencoderapp.R;
 import com.kuanggang.hencoderapp.function.BrowserActivity;
-import com.kuanggang.hencoderapp.model.type.HomeDataEnum;
+import com.kuanggang.hencoderapp.model.denum.HomeDataEnum;
 import com.kuanggang.hencoderapp.utils.DensityUtil;
 import com.kuanggang.hencoderapp.utils.GlideUtils;
 
