@@ -8,7 +8,18 @@ import java.util.List;
  */
 
 public enum ClassPracticeEnum {
-    DRAWCOLOR(ClassCode.CLASS1_1.code, "drawColor");
+    DRAWCOLOR(ClassCode.CLASS1_1.code, "drawColor()"),
+    DRAWRGB(ClassCode.CLASS1_1.code, "drawRGB()"),
+    DRAWCIRCLE(ClassCode.CLASS1_1.code, "drawCircle()"),
+    DRAWRECT(ClassCode.CLASS1_1.code, "drawRect()"),
+    DRAWPOINT(ClassCode.CLASS1_1.code, "drawPoint()"),
+    DRAWPOINTS(ClassCode.CLASS1_1.code, "drawPoints()"),
+    DRAWOVAL(ClassCode.CLASS1_1.code, "drawOval()"),
+    DRAWLINE(ClassCode.CLASS1_1.code, "drawLine()"),
+    DRAWLINES(ClassCode.CLASS1_1.code, "drawLines()"),
+    DRAWROUNDRECT(ClassCode.CLASS1_1.code, "drawRoundRect()"),
+    DRAWARC(ClassCode.CLASS1_1.code, "drawArc()"),
+    DRAWPATH(ClassCode.CLASS1_1.code, "drawPath()");
     public int code;
     public String key;
 

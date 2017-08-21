@@ -20,15 +20,17 @@ import java.util.List;
 public class PracticePagerAdapter extends FragmentPagerAdapter {
 
     private List<ClassPracticeEnum> mDatas;
+    private int code;
 
     public PracticePagerAdapter(FragmentManager fm, int code) {
         super(fm);
-        mDatas = ClassPracticeEnum.getPracticeByCode(code);
+        this.mDatas = ClassPracticeEnum.getPracticeByCode(code);
+        this.code = code;
     }
 
     @Override
     public Fragment getItem(int position) {
-        PracticeFragment practiceFragment = PracticeFragment.newInstance();
+        PracticeFragment practiceFragment = PracticeFragment.newInstance(mDatas, code);
         // 绑定view和presenter
         DataRepository dataRepository = new DataRepository(new RemoteDataSource(), new LocalDataSource());
         new PracticePresenter(practiceFragment, dataRepository);
